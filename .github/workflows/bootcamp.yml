@@ -17,3 +17,6 @@ jobs:
       - name: Print Secret
         run: |
             echo "The value of MY_SECRET is: ${{ secrets.MY_SECRET }}"
+        
+        env:
+            MY_ENV_VAR: "My var value"
