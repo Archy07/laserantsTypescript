@@ -1,0 +1,19 @@
+name: PR Trigger Action
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  print-messages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Environment Variable
+        run: |
+            echo "The value of MY_ENV_VAR is: ${{ env.MY_ENV_VAR }}"
+
+      - name: Print Secret
+        run: |
+            echo "The value of MY_SECRET is: ${{ secrets.MY_SECRET }}"
