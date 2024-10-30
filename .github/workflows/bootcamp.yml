@@ -1,22 +1,25 @@
-name: PR Trigger Action
+name: Display Variable in Console
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  print-messages:
+  display-variable-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Environment Variable
-        run: |
-            echo "The value of MY_ENV_VAR is: $MY_ENV_VAR"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Print Secret
+      - name: Set and display variable
         run: |
-            echo "The value of MY_SECRET is: ${{ secrets.MY_SECRET }}"
-        
+          echo "My custom variable is: $MY_VARIABLE"
+
         env:
-            MY_ENV_VAR: "My var value"
+          MY_VARIABLE: myvar_123
+
+      - name: Display my secret var
+        run: |
+          echo "My secret variable is: ${{ secrets.MY_SECRET_VAR }}"
